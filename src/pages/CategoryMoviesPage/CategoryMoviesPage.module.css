@@ -1,0 +1,42 @@
+.page {
+    padding: 24px;
+}
+
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.tab {
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--color-text);
+    background: none;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.tabActive {
+    background-color: #01b4e4;
+    color: #fff;
+    border-color: #01b4e4;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}

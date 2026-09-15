@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: var(--color-surface);
+}
+
+.logo {
+    height: 32px;
+    cursor: pointer;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.navLink {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.navLink.active {
+    font-weight: 700;
+}
