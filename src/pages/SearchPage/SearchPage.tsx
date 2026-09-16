@@ -1,0 +1,90 @@
+import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useSearchMoviesQuery } from '../../api/movieApi';
+import { MovieCard } from '../../components/MovieCard/MovieCard';
+import styles from './SearchPage.module.css';
+
+export const SearchPage = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const urlQuery = searchParams.get('query') ?? '';
+    const page = Number(searchParams.get('page')) || 1;
+
+    const [inputValue, setInputValue] = useState(urlQuery);
+
+    const { data, isLoading, isFetching } = useSearchMoviesQuery(
+        { query: urlQuery, page },
+        { skip: urlQuery.trim().length === 0 },
+    );
+
+    const handleSearch = () => {
+        if (inputValue.trim()) {
+            setSearchParams({ query: inputValue.trim() });
+        }
+    };
+
+    const handleClear = () => {
+        setInputValue('');
+        setSearchParams({});
+    };
+
+    const handlePageChange = (nextPage: number) => {
+        setSearchParams({ query: urlQuery, page: String(nextPage) });
+    };
+
+    const hasQuery = urlQuery.trim().length > 0;
+    const hasResults = data && data.results.length > 0;
+    const noResults = hasQuery && data && data.results.length === 0;
+
+    return (
+        <div className={styles.page}>
+            <div className={styles.searchRow}>
+                <input
+                    className={styles.input}
+                    type="search"
+                    placeholder="Search for a movie..."
+                    value={inputValue}
+                    onChange={(event) => {
+                        setInputValue(event.target.value);
+                        if (event.target.value === '') {
+                            handleClear();
+                        }
+                    }}
+                    onKeyDown={(event) => event.key === 'Enter' && handleSearch()}
+                />
+                <button className={styles.searchButton} onClick={handleSearch} disabled={!inputValue.trim()}>
+                    Search
+                </button>
+            </div>
+
+            {!hasQuery && <p className={styles.message}>Enter a movie title to start searching</p>}
+
+            {(isLoading || isFetching) && hasQuery && <p className={styles.message}>Loading...</p>}
+
+            {noResults && <p className={styles.message}>No matches found for "{urlQuery}"</p>}
+
+            {hasResults && (
+                <>
+                    <div className={styles.grid}>
+                        {data.results.map((movie) => (
+                            <MovieCard key={movie.id} movie={movie} />
+                        ))}
+                    </div>
+                    <div className={styles.pagination}>
+                        <button disabled={page <= 1} onClick={() => handlePageChange(page - 1)}>
+                            Prev
+                        </button>
+                        <span>
+                            {page} / {Math.min(data.total_pages, 500)}
+                        </span>
+                        <button
+                            disabled={page >= Math.min(data.total_pages, 500)}
+                            onClick={() => handlePageChange(page + 1)}
+                        >
+                            Next
+                        </button>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};

@@ -41,6 +41,9 @@ export const movieApi = baseApi.injectEndpoints({
                 return `/discover/movie?${params.toString()}`;
             },
         }),
+        searchMovies: builder.query<MoviesResponse, { query: string; page: number }>({
+    query: ({ query, page }) => `/search/movie?query=${encodeURIComponent(query)}&page=${page}`,
+}),
     }),
 });
 
@@ -51,4 +54,5 @@ export const {
     useGetNowPlayingMoviesQuery,
     useGetGenresQuery,
     useDiscoverMoviesQuery,
+    useSearchMoviesQuery,
 } = movieApi;
