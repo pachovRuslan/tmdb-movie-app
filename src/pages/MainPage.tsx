@@ -1,14 +1,19 @@
-
 import { useGetNowPlayingMoviesQuery, useGetPopularMoviesQuery, useGetTopRatedMoviesQuery, useGetUpcomingMoviesQuery } from '../api/movieApi';
 import { MovieRow } from '../components/MovieRow/MovieRow';
 import { WelcomeSection } from '../components/WelcomeSection/WelcomeSection';
- 
+import { useApiErrorToast } from '../hooks/useApiErrorToast';
+
 
 export const MainPage = () => {
-    const { data: popular } = useGetPopularMoviesQuery(1);
-    const { data: topRated } = useGetTopRatedMoviesQuery(1);
-    const { data: upcoming } = useGetUpcomingMoviesQuery(1);
-    const { data: nowPlaying } = useGetNowPlayingMoviesQuery(1);
+    const { data: popular, error: popularError } = useGetPopularMoviesQuery(1);
+    const { data: topRated, error: topRatedError } = useGetTopRatedMoviesQuery(1);
+    const { data: upcoming, error: upcomingError } = useGetUpcomingMoviesQuery(1);
+    const { data: nowPlaying, error: nowPlayingError } = useGetNowPlayingMoviesQuery(1);
+
+    useApiErrorToast(popularError);
+    useApiErrorToast(topRatedError);
+    useApiErrorToast(upcomingError);
+    useApiErrorToast(nowPlayingError);
 
     return (
         <div>

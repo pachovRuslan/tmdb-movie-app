@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useSearchMoviesQuery } from '../../api/movieApi';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import styles from './SearchPage.module.css';
+import { useApiErrorToast } from '../../hooks/useApiErrorToast';
 
 export const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -11,10 +12,11 @@ export const SearchPage = () => {
 
     const [inputValue, setInputValue] = useState(urlQuery);
 
-    const { data, isLoading, isFetching } = useSearchMoviesQuery(
+    const { data, isLoading, isFetching, error } = useSearchMoviesQuery(
         { query: urlQuery, page },
         { skip: urlQuery.trim().length === 0 },
-    );
+        
+    );useApiErrorToast(error)
 
     const handleSearch = () => {
         if (inputValue.trim()) {

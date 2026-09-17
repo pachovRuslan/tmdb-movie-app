@@ -8,6 +8,7 @@ import {
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { CATEGORIES, CATEGORY_LABELS, type CategoryType } from './categoryConfig';
 import styles from './CategoryMoviesPage.module.css';
+import { useApiErrorToast } from '../../hooks/useApiErrorToast';
 
 export const CategoryMoviesPage = () => {
     const { category } = useParams<{ category: string }>();
@@ -24,7 +25,7 @@ export const CategoryMoviesPage = () => {
     const upcomingResult = useGetUpcomingMoviesQuery(page, { skip: activeCategory !== 'upcoming' });
     const nowPlayingResult = useGetNowPlayingMoviesQuery(page, { skip: activeCategory !== 'now_playing' });
 
-    const { data, isLoading } = (() => {
+    const { data, isLoading, error } = (() => {
         switch (activeCategory) {
             case 'top_rated':
                 return topRatedResult;
@@ -36,6 +37,8 @@ export const CategoryMoviesPage = () => {
                 return popularResult;
         }
     })();
+
+    useApiErrorToast(error);
 
     const handleCategoryChange = (nextCategory: CategoryType) => {
         navigate(`/category/${nextCategory}`);

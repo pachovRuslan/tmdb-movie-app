@@ -1,10 +1,11 @@
-import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useGetGenresQuery, useDiscoverMoviesQuery } from '../../api/movieApi';
 import { useDebounce } from '../../hooks/useDebounce';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { SORT_OPTIONS, DEFAULT_SORT, DEFAULT_MIN_RATING, DEFAULT_MAX_RATING } from './sortOptions';
 import styles from './FilteredMoviesPage.module.css';
+import type { Genre } from '../../types/genre.ts';
+import { useApiErrorToast } from '../../hooks/useApiErrorToast.ts';
 
 export const FilteredMoviesPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -19,14 +20,17 @@ export const FilteredMoviesPage = () => {
     const debouncedMinRating = useDebounce(minRating, 200);
     const debouncedMaxRating = useDebounce(maxRating, 200);
 
-    const { data: genresData } = useGetGenresQuery();
-    const { data, isLoading } = useDiscoverMoviesQuery({
-        page,
-        sortBy,
-        voteAverageGte: debouncedMinRating,
-        voteAverageLte: debouncedMaxRating,
-        genres: selectedGenres,
-    });
+const { data: genresData, error: genresError } = useGetGenresQuery();
+const { data, isLoading, error } = useDiscoverMoviesQuery({
+    page,
+    sortBy,
+    voteAverageGte: debouncedMinRating,
+    voteAverageLte: debouncedMaxRating,
+    genres: selectedGenres,
+});
+
+useApiErrorToast(genresError);
+useApiErrorToast(error);
 
     const updateParam = (key: string, value: string | null) => {
         const next = new URLSearchParams(searchParams);
@@ -99,7 +103,7 @@ export const FilteredMoviesPage = () => {
                 <div className={styles.section}>
                     <span className={styles.sectionTitle}>Genres</span>
                     <div className={styles.genreList}>
-                        {genresData?.genres.map((genre) => (
+                       {genresData?.genres.map((genre: Genre) => (
                             <button
                                 key={genre.id}
                                 className={
