@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { router } from './routes/AppRouter';
 import { useAppSelector } from './app/hooks';
 import { getMuiTheme } from './app/muiTheme';
+import { GlobalLoader } from './components/GlobalLoader/GlobalLoader';
 
 export const App = () => {
     const themeMode = useAppSelector((state) => state.theme.mode);
@@ -18,6 +19,7 @@ export const App = () => {
     return (
         <ThemeProvider theme={muiTheme}>
             <CssBaseline />
+            <GlobalLoader />
             <RouterProvider router={router} />
             <ToastContainer position="bottom-right" theme={themeMode} />
         </ThemeProvider>

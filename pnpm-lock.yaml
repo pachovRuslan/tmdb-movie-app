@@ -29,6 +29,9 @@ importers:
       react-dom:
         specifier: ^19.2.8
         version: 19.3.0(react@19.3.0)
+      react-loading-skeleton:
+        specifier: ^3.5.0
+        version: 3.5.0(react@19.3.0)
       react-redux:
         specifier: ^9.3.0
         version: 9.3.0(@types/react@19.3.0)(react@19.3.0)(redux@5.0.1)
@@ -1103,6 +1106,11 @@ packages:
 
   react-is@19.3.0:
     resolution: {integrity: sha512-UpMYezM4v5/18F28aC66AEsjXIgE02kyEMH6yLdgLXu/UTfa1Ntwck/nNLrbqJsEXW7gPb0coNO9FQse9WTovA==}
+
+  react-loading-skeleton@3.5.0:
+    resolution: {integrity: sha512-gxxSyLbrEAdXTKgfbpBEFZCO/P153DnqSCQau2+o6lNy1jgMRr2MmRmOzMmyrwSaSYLRB8g7b0waYPmUjz7IhQ==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   react-redux@9.3.0:
     resolution: {integrity: sha512-KQopgqFo/p/fgmAs5qz6p5RWaNAzq40WAu7fJIXnQpYxFPbJYtsJPWvGeF2rOBaY/kEuV77AVsX8TsQzKm+A/g==}
@@ -2313,6 +2321,10 @@ snapshots:
   react-is@16.13.1: {}
 
   react-is@19.3.0: {}
+
+  react-loading-skeleton@3.5.0(react@19.3.0):
+    dependencies:
+      react: 19.3.0
 
   react-redux@9.3.0(@types/react@19.3.0)(react@19.3.0)(redux@5.0.1):
     dependencies:

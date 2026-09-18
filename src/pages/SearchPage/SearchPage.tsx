@@ -4,6 +4,7 @@ import { useSearchMoviesQuery } from '../../api/movieApi';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 import styles from './SearchPage.module.css';
 import { useApiErrorToast } from '../../hooks/useApiErrorToast';
+import { MovieCardSkeleton } from '../../components/MovieCardSkeleton/MovieCardSkeleton';
 
 export const SearchPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -15,8 +16,8 @@ export const SearchPage = () => {
     const { data, isLoading, isFetching, error } = useSearchMoviesQuery(
         { query: urlQuery, page },
         { skip: urlQuery.trim().length === 0 },
-        
-    );useApiErrorToast(error)
+
+    ); useApiErrorToast(error)
 
     const handleSearch = () => {
         if (inputValue.trim()) {
@@ -60,11 +61,19 @@ export const SearchPage = () => {
 
             {!hasQuery && <p className={styles.message}>Enter a movie title to start searching</p>}
 
-            {(isLoading || isFetching) && hasQuery && <p className={styles.message}>Loading...</p>}
+            {hasQuery && (isLoading || isFetching) && (
+                <div className={styles.grid}>
+                    {Array.from({ length: 12 }).map((_, index) => (
+                        <MovieCardSkeleton key={index} />
+                    ))}
+                </div>
+            )}
 
-            {noResults && <p className={styles.message}>No matches found for "{urlQuery}"</p>}
+            {hasQuery && !isLoading && !isFetching && noResults && (
+                <p className={styles.message}>No matches found for "{urlQuery}"</p>
+            )}
 
-            {hasResults && (
+            {hasQuery && !isLoading && !isFetching && hasResults && (
                 <>
                     <div className={styles.grid}>
                         {data.results.map((movie) => (

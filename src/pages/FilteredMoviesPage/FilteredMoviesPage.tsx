@@ -6,6 +6,7 @@ import { SORT_OPTIONS, DEFAULT_SORT, DEFAULT_MIN_RATING, DEFAULT_MAX_RATING } fr
 import styles from './FilteredMoviesPage.module.css';
 import type { Genre } from '../../types/genre.ts';
 import { useApiErrorToast } from '../../hooks/useApiErrorToast.ts';
+import { MovieCardSkeleton } from '../../components/MovieCardSkeleton/MovieCardSkeleton.tsx';
 
 export const FilteredMoviesPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -20,17 +21,17 @@ export const FilteredMoviesPage = () => {
     const debouncedMinRating = useDebounce(minRating, 200);
     const debouncedMaxRating = useDebounce(maxRating, 200);
 
-const { data: genresData, error: genresError } = useGetGenresQuery();
-const { data, isLoading, error } = useDiscoverMoviesQuery({
-    page,
-    sortBy,
-    voteAverageGte: debouncedMinRating,
-    voteAverageLte: debouncedMaxRating,
-    genres: selectedGenres,
-});
+    const { data: genresData, error: genresError } = useGetGenresQuery();
+    const { data, isLoading, error } = useDiscoverMoviesQuery({
+        page,
+        sortBy,
+        voteAverageGte: debouncedMinRating,
+        voteAverageLte: debouncedMaxRating,
+        genres: selectedGenres,
+    });
 
-useApiErrorToast(genresError);
-useApiErrorToast(error);
+    useApiErrorToast(genresError);
+    useApiErrorToast(error);
 
     const updateParam = (key: string, value: string | null) => {
         const next = new URLSearchParams(searchParams);
@@ -103,7 +104,7 @@ useApiErrorToast(error);
                 <div className={styles.section}>
                     <span className={styles.sectionTitle}>Genres</span>
                     <div className={styles.genreList}>
-                       {genresData?.genres.map((genre: Genre) => (
+                        {genresData?.genres.map((genre: Genre) => (
                             <button
                                 key={genre.id}
                                 className={
@@ -125,7 +126,11 @@ useApiErrorToast(error);
             </aside>
 
             <div>
-                {isLoading && <p>Loading...</p>}
+                <div className={styles.grid}>
+                    {isLoading
+                        ? Array.from({ length: 12 }).map((_, index) => <MovieCardSkeleton key={index} />)
+                        : data?.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+                </div>
                 <div className={styles.grid}>
                     {data?.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
                 </div>

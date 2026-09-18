@@ -9,6 +9,7 @@ import { MovieCard } from '../../components/MovieCard/MovieCard';
 import { CATEGORIES, CATEGORY_LABELS, type CategoryType } from './categoryConfig';
 import styles from './CategoryMoviesPage.module.css';
 import { useApiErrorToast } from '../../hooks/useApiErrorToast';
+import { MovieCardSkeleton } from '../../components/MovieCardSkeleton/MovieCardSkeleton';
 
 export const CategoryMoviesPage = () => {
     const { category } = useParams<{ category: string }>();
@@ -64,7 +65,11 @@ export const CategoryMoviesPage = () => {
 
             <h1 className={styles.title}>{CATEGORY_LABELS[activeCategory]} Movies</h1>
 
-            {isLoading && <p>Loading...</p>}
+            <div className={styles.grid}>
+                {isLoading
+                    ? Array.from({ length: 12 }).map((_, index) => <MovieCardSkeleton key={index} />)
+                    : data?.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+            </div>
 
             <div className={styles.grid}>
                 {data?.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
