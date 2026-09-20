@@ -1,3 +1,3 @@
 export const Footer = () => {
-    return <footer>© 2025 Kinopoisk Demo · Data courtesy of TMDB.</footer>;
+    return <footer>© 2026 Kinopoisk Demo · Data courtesy of TMDB.</footer>;
 };
