@@ -4,6 +4,14 @@
     justify-content: space-between;
     padding: 12px 24px;
     background-color: var(--color-surface);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -11,10 +19,6 @@
     cursor: pointer;
 }
 
-.nav {
-    display: flex;
-    gap: 20px;
-}
 
 .navLink {
     color: var(--color-text);
