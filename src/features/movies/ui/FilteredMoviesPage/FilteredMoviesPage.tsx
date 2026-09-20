@@ -4,9 +4,9 @@ import { useDebounce } from "@/common/hooks/useDebounce";
 import { MovieCard } from "@/common/components/MovieCard/MovieCard";
 import { SORT_OPTIONS, DEFAULT_SORT, DEFAULT_MIN_RATING, DEFAULT_MAX_RATING } from "./sortOptions";
 import s from "./FilteredMoviesPage.module.css";
-import type { Genre } from "@/types/genre.ts";
 import { useApiErrorToast } from "@/common/hooks/useApiErrorToast.ts";
 import { MovieCardSkeleton } from "@/common/components/MovieCardSkeleton/MovieCardSkeleton.tsx";
+import type { Genre } from "@/common/types";
 
 export const FilteredMoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
