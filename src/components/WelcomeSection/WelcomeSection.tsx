@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { getImageUrl } from "@/utils/image";
 import type { Movie } from "@/types/movie";
 import s from "./WelcomeSection.module.css";

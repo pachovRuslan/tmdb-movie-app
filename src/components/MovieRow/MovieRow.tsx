@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import type { Movie } from "@/types/movie";
 import s from "./MovieRow.module.css";
 import { MovieCard } from "@/components/MovieCard/MovieCard"                      

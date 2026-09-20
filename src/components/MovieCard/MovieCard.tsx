@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { toggleFavorite } from "@/features/favorites/favoritesSlice";
 import { getImageUrl } from "@/utils/image";

@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { useGetGenresQuery, useDiscoverMoviesQuery } from "@/api/movieApi";
 import { useDebounce } from "@/hooks/useDebounce";
 import { MovieCard } from "@/components/MovieCard/MovieCard";

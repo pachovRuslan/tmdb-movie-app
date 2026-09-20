@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router";
 import { useSearchMoviesQuery } from "@/api/movieApi";
 import { MovieCard } from "@/components/MovieCard/MovieCard";
 import s from "./SearchPage.module.css";

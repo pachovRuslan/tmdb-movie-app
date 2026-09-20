@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import tmdbLogo from "@/assets/tmdb-logo.svg";
 import s from "./Header.module.css";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
