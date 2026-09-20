@@ -5,6 +5,7 @@ import { MovieCard } from "@/common/components/MovieCard/MovieCard";
 import s from "./SearchPage.module.css";
 import { useApiErrorToast } from "@/common/hooks/useApiErrorToast";
 import { MovieCardSkeleton } from "@/common/components/MovieCardSkeleton/MovieCardSkeleton";
+import { EmptyState } from "@/common/components";
 
 export const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -54,11 +55,7 @@ export const SearchPage = () => {
           }}
           onKeyDown={(event) => event.key === "Enter" && handleSearch()}
         />
-        <button
-          className={s.searchButton}
-          onClick={handleSearch}
-          disabled={!inputValue.trim()}
-        >
+        <button className={s.searchButton} onClick={handleSearch} disabled={!inputValue.trim()}>
           Search
         </button>
       </div>
@@ -74,7 +71,10 @@ export const SearchPage = () => {
       )}
 
       {hasQuery && !isLoading && !isFetching && noResults && (
-        <p className={s.message}>No matches found for "{urlQuery}"</p>
+        <EmptyState
+          title="No matches found"
+          subtitle={`Try a different title than "${urlQuery}"`}
+        />
       )}
 
       {hasQuery && !isLoading && !isFetching && hasResults && (

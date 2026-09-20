@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { toggleFavorite } from "@/features/favorites/model/favoritesSlice";
 import s from "./FavoritesPage.module.css";
 import { useAppDispatch, useAppSelector } from "@/app/model/hooks";
+import { EmptyState } from "@/common/components";
 
 const getRatingColor = (rating: number): string => {
   if (rating >= 7) return "#21d07a";
@@ -19,16 +20,15 @@ export const FavoritesPage = () => {
       <h1 className={s.title}>Favorites</h1>
 
       {favorites.length === 0 && (
-        <p className={s.message}>You haven't added any favorites yet</p>
+        <EmptyState
+          title="No favorites yet"
+          subtitle="Add movies to favorites by clicking the heart icon"
+        />
       )}
 
       <div className={s.grid}>
         {favorites.map((movie) => (
-          <div
-            key={movie.id}
-            className={s.card}
-            onClick={() => navigate(`/movie/${movie.id}`)}
-          >
+          <div key={movie.id} className={s.card} onClick={() => navigate(`/movie/${movie.id}`)}>
             <button
               className={s.removeButton}
               onClick={(event) => {
