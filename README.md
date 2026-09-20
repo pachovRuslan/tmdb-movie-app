@@ -25,18 +25,18 @@
 
 ## Запуск локально
 
-\`\`\`bash
+```bash
 pnpm install
-\`\`\`
+```
 
 Создай файл `.env` в корне проекта:
 
-\`\`\`
+```
 VITE_TMDB_TOKEN=your_tmdb_read_access_token
 VITE_TMDB_BASE_URL=https://api.themoviedb.org/3
 VITE_TMDB_IMAGE_BASE_URL=https://image.tmdb.org/t/p
-\`\`\`
+```
 
-\`\`\`bash
+```bash
 pnpm dev
-\`\`\`
+```
