@@ -7,21 +7,30 @@ import {
 import { MovieRow } from "@/common/components/MovieRow/MovieRow";
 import { WelcomeSection } from "@/common/components/WelcomeSection/WelcomeSection";
 import { useApiErrorToast } from "@/common/hooks/useApiErrorToast";
+import { EmptyState } from "@/common/components/EmptyState/EmptyState"
 
 export const MainPage = () => {
-  const {
-    data: popular,
-    error: popularError,
-    isLoading: isPopularLoading,
-  } = useGetPopularMoviesQuery(1);
-  const { data: topRated, error: topRatedError } = useGetTopRatedMoviesQuery(1);
-  const { data: upcoming, error: upcomingError } = useGetUpcomingMoviesQuery(1);
-  const { data: nowPlaying, error: nowPlayingError } = useGetNowPlayingMoviesQuery(1);
+  const { data: popular, error: popularError, isLoading: isPopularLoading } = useGetPopularMoviesQuery(1)
+  const { data: topRated, error: topRatedError } = useGetTopRatedMoviesQuery(1)
+  const { data: upcoming, error: upcomingError } = useGetUpcomingMoviesQuery(1)
+  const { data: nowPlaying, error: nowPlayingError } = useGetNowPlayingMoviesQuery(1)
 
-  useApiErrorToast(popularError);
-  useApiErrorToast(topRatedError);
-  useApiErrorToast(upcomingError);
-  useApiErrorToast(nowPlayingError);
+  useApiErrorToast(popularError)
+  useApiErrorToast(topRatedError)
+  useApiErrorToast(upcomingError)
+  useApiErrorToast(nowPlayingError)
+
+  // Если все запросы упали — показываем заглушку
+  const allFailed = popularError && topRatedError && upcomingError && nowPlayingError
+
+  if (allFailed) {
+    return (
+      <EmptyState
+        title="Unable to load movies"
+        subtitle="The Movie Database API seems to be unavailable. Please try again later."
+      />
+    )
+  }
 
   return (
     <div>
@@ -32,15 +41,9 @@ export const MainPage = () => {
         category="popular"
         isLoading={isPopularLoading}
       />
-      {topRated && (
-        <MovieRow title="Top Rated Movies" movies={topRated.results} category="top_rated" />
-      )}
-      {upcoming && (
-        <MovieRow title="Upcoming Movies" movies={upcoming.results} category="upcoming" />
-      )}
-      {nowPlaying && (
-        <MovieRow title="Now Playing Movies" movies={nowPlaying.results} category="now_playing" />
-      )}
+      {topRated && <MovieRow title="Top Rated Movies" movies={topRated.results} category="top_rated" />}
+      {upcoming && <MovieRow title="Upcoming Movies" movies={upcoming.results} category="upcoming" />}
+      {nowPlaying && <MovieRow title="Now Playing Movies" movies={nowPlaying.results} category="now_playing" />}
     </div>
-  );
-};
+  )
+}
