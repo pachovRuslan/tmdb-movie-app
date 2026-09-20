@@ -1,0 +1,31 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    gap: 16px;
+}
+
+.code {
+    font-size: 96px;
+    font-weight: 700;
+    margin: 0;
+    opacity: 0.3;
+}
+
+.message {
+    font-size: 18px;
+    margin: 0;
+}
+
+.homeButton {
+    padding: 10px 24px;
+    border-radius: 4px;
+    border: none;
+    background-color: #01b4e4;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}

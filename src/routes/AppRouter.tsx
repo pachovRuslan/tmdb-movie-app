@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { MainPage } from '../pages/MainPage';
-import { NotFoundPage } from '../pages/NotFoundPage';
 import { CategoryMoviesPage } from '../pages/CategoryMoviesPage/CategoryMoviesPage';
 import { FilteredMoviesPage } from '../pages/FilteredMoviesPage/FilteredMoviesPage';
 import { SearchPage } from '../pages/SearchPage/SearchPage';
 import { FavoritesPage } from '../pages/FavoritesPage/FavoritesPage';
 import { MovieDetailsPage } from '../pages/MovieDetailsPage/MovieDetailsPage';
+import { NotFoundPage } from '../pages/NotFoundPage/NotFoundPage';
 
 export const router = createBrowserRouter([
     {
