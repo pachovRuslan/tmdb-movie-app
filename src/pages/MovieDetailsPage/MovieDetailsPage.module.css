@@ -1,119 +1,119 @@
 .page {
-    padding: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .backButton {
-    margin-bottom: 16px;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: 1px solid var(--color-text);
-    background: none;
-    color: var(--color-text);
-    cursor: pointer;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--color-text);
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
 }
 
 .infoBlock {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 24px;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
 }
 
 @media (max-width: 640px) {
-    .infoBlock {
-        grid-template-columns: 1fr;
-    }
+  .infoBlock {
+    grid-template-columns: 1fr;
+  }
 
-    .poster {
-        max-width: 250px;
-        margin: 0 auto;
-    }
+  .poster {
+    max-width: 250px;
+    margin: 0 auto;
+  }
 }
 
 .poster {
-    width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .title {
-    font-size: 32px;
-    margin: 0 0 8px;
+  font-size: 32px;
+  margin: 0 0 8px;
 }
 
 .meta {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin-bottom: 16px;
-    opacity: 0.8;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+  opacity: 0.8;
 }
 
 .rating {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
 }
 
 .genres {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .genreTag {
-    padding: 4px 10px;
-    border-radius: 16px;
-    border: 1px solid var(--color-text);
-    font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 16px;
+  border: 1px solid var(--color-text);
+  font-size: 13px;
 }
 
 .overview {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 .sectionTitle {
-    font-size: 22px;
-    margin-bottom: 16px;
+  font-size: 22px;
+  margin-bottom: 16px;
 }
 
 .castGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
 }
 
 .castCard {
-    text-align: center;
+  text-align: center;
 }
 
 .castPhoto {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 8px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
 }
 
 .castName {
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .castCharacter {
-    font-size: 12px;
-    opacity: 0.7;
-    margin: 0;
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
 }
 
 .similarGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
 }

@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-import styles from './NotFoundPage.module.css';
+import { Link } from "react-router-dom";
+import s from "./NotFoundPage.module.css";
 
 export const NotFoundPage = () => {
-    return (
-        <div className={styles.page}>
-            <p className={styles.code}>404</p>
-            <p className={styles.message}>Page not found</p>
-            <Link to="/" className={styles.homeButton}>
-                Back to Main
-            </Link>
-        </div>
-    );
+  return (
+    <div className={s.page}>
+      <p className={s.code}>404</p>
+      <p className={s.message}>Page not found</p>
+      <Link to="/" className={s.homeButton}>
+        Back to Main
+      </Link>
+    </div>
+  );
 };
