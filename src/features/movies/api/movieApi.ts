@@ -1,4 +1,4 @@
-import { baseApi } from "../../../app/api/baseApi";
+import { baseApi } from "@/app/api/baseApi";
 import type { CreditsResponse, MovieDetails, MoviesResponse } from "@/common/types";
 import type { GenresResponse } from "@/common/types";
 import {

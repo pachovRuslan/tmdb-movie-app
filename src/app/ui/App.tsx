@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css"
 import { Routing } from "@/common/routing"
 import { getMuiTheme } from "@/app/muiTheme"
 import { GlobalLoader } from "@/common/components/GlobalLoader/GlobalLoader"
-import { useAppSelector } from "../model/hooks"
+import { useAppSelector } from "@/app/model/hooks"
 
 export const App = () => {
   const themeMode = useAppSelector((state) => state.theme.mode)

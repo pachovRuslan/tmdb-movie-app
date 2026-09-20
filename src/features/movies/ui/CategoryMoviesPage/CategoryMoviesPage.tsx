@@ -73,12 +73,6 @@ export const CategoryMoviesPage = () => {
           : data?.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
       </div>
 
-      <div className={s.grid}>
-        {data?.results.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-
       {data && (
         <div className={s.pagination}>
           <button disabled={page <= 1} onClick={() => handlePageChange(page - 1)}>

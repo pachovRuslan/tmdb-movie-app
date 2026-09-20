@@ -1,7 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit"; 
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { themeReducer } from "@/features/theme/model/themeSlice";
 import { favoritesReducer } from "@/features/favorites/model/favoritesSlice";
-import { baseApi } from "../api/baseApi";
+import { baseApi } from "@/app/api/baseApi";
 
 export const store = configureStore({
   reducer: {
@@ -14,3 +15,4 @@ export const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+setupListeners(store.dispatch);

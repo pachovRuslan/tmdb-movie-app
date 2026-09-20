@@ -131,11 +131,6 @@ export const FilteredMoviesPage = () => {
             ? Array.from({ length: 12 }).map((_, index) => <MovieCardSkeleton key={index} />)
             : data?.results.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
         </div>
-        <div className={s.grid}>
-          {data?.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
 
         {data && (
           <div className={s.pagination}>
