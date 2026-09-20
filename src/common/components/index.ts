@@ -1,0 +1,8 @@
+export { Header } from "./Header/Header"
+export { Footer } from "./Footer/Footer"
+export { Layout } from "./Layout/Layout"
+export { GlobalLoader } from "./GlobalLoader/GlobalLoader"
+export { MovieCard } from "./MovieCard/MovieCard"
+export { MovieCardSkeleton } from "./MovieCardSkeleton/MovieCardSkeleton"
+export { MovieRow } from "./MovieRow/MovieRow"
+export { WelcomeSection } from "./WelcomeSection/WelcomeSection"

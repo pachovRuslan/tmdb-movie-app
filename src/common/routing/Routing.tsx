@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router"
 import { Path } from "./Path"
-import { Layout } from "@/components/Layout/Layout"
-import { MainPage } from "@/pages/MainPage"
-import { CategoryMoviesPage } from "@/pages/CategoryMoviesPage/CategoryMoviesPage"
-import { FilteredMoviesPage } from "@/pages/FilteredMoviesPage/FilteredMoviesPage"
-import { SearchPage } from "@/pages/SearchPage/SearchPage"
-import { FavoritesPage } from "@/pages/FavoritesPage/FavoritesPage"
-import { MovieDetailsPage } from "@/pages/MovieDetailsPage/MovieDetailsPage"
-import { NotFoundPage } from "@/pages/NotFoundPage/NotFoundPage"
+import { Layout } from "@/common/components"
+import { CategoryMoviesPage } from "@/features/movies/ui/CategoryMoviesPage/CategoryMoviesPage"
+import { FilteredMoviesPage } from "@/features/movies/ui/FilteredMoviesPage/FilteredMoviesPage"
+import { SearchPage } from "@/features/movies/ui/SearchPage/SearchPage"
+import { FavoritesPage } from "@/features/favorites/ui/FavoritesPage/FavoritesPage"
+import { MovieDetailsPage } from "@/features/movies/ui/MovieDetailsPage/MovieDetailsPage"
+import { NotFoundPage } from "@/common/components/NotFoundPage/NotFoundPage"
+import { MainPage } from "@/features/movies/ui/MainPage/MainPage"
 
 export const Routing = () => (
   <Routes>
